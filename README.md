@@ -1,68 +1,135 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250" align="right">
 
-## Available Scripts
+# Project Summary
 
-In the project directory, you can run:
+This project is designed to replicate what you might receive on the job. There won't be any guided instruction on what you'll need to do. We will only provide you with design specifications and technical requirements. Your mentors have also been asked to provide only minimal guidance. They can point you in the right direction, but cannot help you code. This project is a chance for you to combine and showcase the skills you've learned so far.
 
-### `npm start`
+With this specification/requirement only structure, we believe this project will showcase what you can do as an individual and how you can work with a team at this point of the program. Because of this, we feel this project will be worth putting in your portfolio.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Good luck and work hard!
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# Color Palette & Font
 
-### `npm test`
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/assets/colors.png" />
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<b><a href="https://fonts.google.com/specimen/Open+Sans?selection.family=Open+Sans">Google Font - Open Sans</a></b>
 
-### `npm run build`
+The dashboard view uses a linear gradient as its background: `linear-gradient(to bottom, #e2f3ea, #ffffff);`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Application Design
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Auth View
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/auth.png" />
 
-### `npm run eject`
+## Dashboard View
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/dashboard.png" />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/filter.png" />
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Wizard View - Steps 1-5
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/wizard1.png" />
 
-## Learn More
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/wizard2.png" />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/wizard3.png" />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/wizard4.png" />
 
-### Code Splitting
+<img src="https://github.com/DevMountain/simulation-2-async/blob/master/views/wizard5.png" />
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+# Technical Requirements - Front-end
 
-### Analyzing the Bundle Size
+## Auth View
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* User can login into their account.
+* User can register for an account.
+* User should be navigated to the Dashboard View on a successful login or successful registration.
 
-### Making a Progressive Web App
+## Dashboard View
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+* User can view a listing of all their properties. 
+* User can filter their properties by "desired rent".
+* User can reset an applied filter to see a list of all their properties again.
+* User can add a new property.
+  * User should be navigated to the Wizard View when attempting to create a new property.
+* User can logout.
+  * User should be navigated to the Auth View.
 
-### Advanced Configuration
+## Wizard View
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+* User should be able to see which step they are on, which steps they have completed, and how many steps are left at all times. This concept is shown in the screenshots above. 
+* User input should be remembered across all steps. 
+  * Example: If a user inputs information on step 1, navigates to step 2, and then navigates back to step 1: the user's input should populate in the input fields.
+  * It is acceptable if user information is lost on refresh.
+* User can click cancel on any step to cancel the creation wizard and be navigated back to the Dashboard View.
+* User can navigate to the previous or next step, if available, on all steps.
+  * For example: Step 1 should not show a previous step button since it is the first step. It should however show a next step button.
+* User can logout on any step.
+  * User should be navigated to the Auth View.
+* Step 1
+  * User can set a property's name and description.
+* Step 2
+  * User can set a property's address, city, state, and zip code.
+* Step 3
+  * User can set a property's image using a URL.
+  * User can see a preview of the image.
+    * The image cannot break out of the preview container if the image is bigger.
+    * The preview container's size should remain static.
+* Step 4
+  * User can set a property's loan and mortgage amount.
+* Step 5
+  * User can set a property's desired rent.
+  * User should be able to see a recommend rent that we calculate for them.
+    * The recommend rent we provide should be the result of the monthly mortage + 25%.
+      * For example: The recommend rent for a monthly mortgage of $500 is $625.
+  * User can complete the wizard process.
+    * User should be navigated back to the Dashboard View and see the newly created property in their property list.
 
-### Deployment
+# Technical Requirements - Back-end
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+* The back-end should be created using express.
+* Massive should be used to establish a connection to your database.
+* Express.static should be used to serve your production-ready front-end files.
+* Authorization middleware should be used to make sure a user is logged in before modifying properties in any way.
+  * If the middleware detects a user is not logged in, the back end should send a status of 403.
+  * If the middleware detects a user is logged in, the back end should send the request to the final endpoint.
+* Express sessions should be used to keep track of logged in users.
 
-### `npm run build` fails to minify
+## Endpoints
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Authorization Endpoints
+
+* POST - `/api/auth/login` - Sets the user information on the session.
+  * On success return a status of 200 and the user object.
+  * A user object should have the following properties:
+    * `id` - This is the `UserId` you are using for your database.
+    * `username` - This is the `username` associated with the `UserId`.
+  * On failure return a status of 500.
+* POST - `/api/auth/register` - Registers a user to the database. Sets the user information on the session.
+  * On success return a status of 200 and the user object.
+  * A user object should have the following properties:
+    * `id` - This is the `UserId` you are using for your database.
+    * `username` - This is the `username` associated with the `UserId`.
+  * On failure return a status of 500.
+* POST - `/api/auth/logout` - Destroys the session. Sends a status of 200.
+
+### Properties Endpoints
+
+* POST - `/api/properties` - Creates a new property. Returns all the properties associated with the logged in user.
+* GET - `/api/properties` - Returns all properties associated with the logged in user. Accepts an optional query that filters all properties associated with the logged in user by "desired rent". Returns all the filtered properties.
+* DELETE - `/api/properties/:id` - Deletes a property. Returns all the properties associated with the logged in user.
+
+## Contributions
+
+If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
+
+## Copyright
+
+© DevMountain LLC, 2017. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
+<p align="center">
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250">
+</p>
